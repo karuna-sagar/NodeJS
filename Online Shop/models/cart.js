@@ -42,7 +42,7 @@ module.exports = class Cart {
       if (err) {
         return;
       }
-      const updatedCart = { ...fileContent };
+      const updatedCart = { ...JSON.stringify(fileContent) };
       const product = updatedCart.products.find((prod) => prod.id === id);
       const prodQty = product.qty;
       updatedCart.products = updatedCart.products.filter(
