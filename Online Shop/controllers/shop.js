@@ -70,13 +70,13 @@ exports.getCart = (req, res, next) => {
           (prod) => prod.id === product.id
         );
         if (cartProductData) {
-          cartProductData.push({
+          cartProducts.push({
             productData: product,
             qty: cartProductData.qty,
           });
         }
       }
-      res.render("/shop/cart", {
+      res.render("shop/cart", {
         path: "/cart",
         pageTitle: "your Cart",
         products: cartProducts,
