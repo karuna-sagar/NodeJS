@@ -1,4 +1,5 @@
 const dotenv = require('dotenv');
+const session = require('session')
 dotenv.config();
 const path = require("path");
 const express = require("express");
@@ -31,6 +32,9 @@ app.use((req, res, next) => {
 app.use('/admin', adminRoutes);
 app.use(shopRoutes)
 app.use(authRoutes);
+app.use(
+    session({ secret: 'my secret' })
+)
 mongoose.connect(process.env.MONGO_URI)
     .then(result => {
         console.log('conected to Database');
