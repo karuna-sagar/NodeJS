@@ -11,7 +11,7 @@ const MongoDBStore = require('connect-mongodb-session')(session);
 const errorController = require("./controllers/error");
 const User = require('./models/user');
 const app = express();
-
+const flash = require('connect-flash');
 const store = new MongoDBStore({
     uri: process.env.MONGO_URI,
     collection: 'sessions'
@@ -42,6 +42,7 @@ app.use(
 );
 
 app.use(csrfProtection)
+app.use(flash());
 app.use((req, res, next) => {
     if (!req.session.user) {
         return next();
