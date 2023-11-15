@@ -1,5 +1,7 @@
 const dotenv = require('dotenv');
 dotenv.config();
+
+const csrf = require('csurf')
 const path = require("path");
 const express = require("express");
 const bodyParser = require("body-parser");
@@ -14,6 +16,8 @@ const store = new MongoDBStore({
     uri: process.env.MONGO_URI,
     collection: 'sessions'
 })
+
+const csrfProtection = csrf()
 app.set("view engine", "ejs");
 app.set("views", "views");
 
@@ -36,6 +40,8 @@ app.use(
         store: store
     })
 );
+
+app.use(csrfProtection)
 app.use((req, res, next) => {
     if (!req.session.user) {
         return next();
