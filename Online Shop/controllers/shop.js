@@ -38,8 +38,7 @@ exports.getIndex = (req, res, next) => {
         prods: products,
         pageTitle: 'Shop',
         path: '/',
-        isAuthenticated: req.session.isLoggedIn,
-        csrfToken: req.csrfToken()
+
       });
     })
     .catch(err => {
@@ -117,8 +116,9 @@ exports.getOrders = (req, res, next) => {
         path: '/orders',
         pageTitle: 'Your Orders',
         orders: orders,
-        isAuthenticated: req.session.isLoggedIn
+        isAuthenticated: req.session.isLoggedIn,
+        csrfToken: req.csrfToken()
       });
     })
     .catch(err => console.log(err));
-};
+};  
