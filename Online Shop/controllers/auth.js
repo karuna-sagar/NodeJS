@@ -6,7 +6,7 @@ const { validationResult } = require('express-validator');
 const nodemailer = require('nodemailer');
 
 const transporter = nodemailer.createTransport({
-    host: process.env.EMAIL_HOST,
+    host: process.env.EMAIL_HOST,   
     port: process.env.EMAIL_PORT,
     auth: {
         user: process.env.EMAIL_USERNAME,
