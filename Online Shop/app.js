@@ -12,6 +12,7 @@ const errorController = require("./controllers/error");
 const User = require('./models/user');
 const app = express();
 const flash = require('connect-flash');
+const multer = require('multer');
 const store = new MongoDBStore({
     uri: process.env.MONGO_URI,
     collection: 'sessions'
@@ -27,6 +28,7 @@ const authRoutes = require('./routes/auth');
 
 
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(multer().single('image'));
 app.use(express.static(path.join(__dirname, "public")));
 
 
