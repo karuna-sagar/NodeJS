@@ -161,11 +161,7 @@ exports.getInvoice = (req, res, next) => {
       }
       res.setHeader('Content-Type', 'application/pdf');
       res.setHeader('Content-Disposition', 'attachment; filename=quote.pdf');
-      // res.contentType("application/pdf")
-      // res.setHeader(
-      //   'Content-Disposition',
-      //   'inline; filename="' + invoiceName + '"'
-      // );
+
       res.send(data);
     })
   }).catch(err => console.log(err))
