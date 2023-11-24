@@ -3,6 +3,7 @@ const path = require('path');
 const Product = require('../models/product');
 const Order = require('../models/order');
 const PDFDocument = require('pdfkit')
+
 exports.getProducts = (req, res, next) => {
   Product.find()
     .then(products => {
